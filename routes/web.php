@@ -17,3 +17,5 @@ Route::get('/services', 'PagesController@services');
 
 Route::get('/posts', 'PostsController@index');
 Route::get('/posts/{id}', 'PostsController@show')->name('show');
+Route::get('/createpost', 'PostsController@create');
+Route::post('/createpost', 'PostsController@store');

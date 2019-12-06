@@ -10,6 +10,9 @@
                 </div>
                 <hr>
             </div>
-        @endforeach        
+        @endforeach
+        {{-- {{ $posts->links() }} --}}
+    @else
+        <p>No Post Found</p>
     @endif
 @endsection

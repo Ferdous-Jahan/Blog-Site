@@ -14,6 +14,7 @@ class PostsController extends Controller
      */
     public function index()
     {
+        //$posts = Post::orderBy('created_at', 'desc')->paginate(1);
         $posts = Post::all();
         return view('posts.index')->with('posts', $posts);
     }
@@ -25,7 +26,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -36,7 +37,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 123;
     }
 
     /**

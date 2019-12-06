@@ -52,6 +52,15 @@ html {
 }
 
 
+
+.centerDiv
+  {
+    width: 60%;
+    height:200px;
+    margin: 0 auto;
+  }
+
+
 .hovereffect {
   width: 100%;
   height: 100%;
