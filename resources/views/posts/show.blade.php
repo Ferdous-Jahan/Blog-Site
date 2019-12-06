@@ -8,4 +8,5 @@
             <p>{{$post->body}}</p>
         </div>
     </div>
+    <a href="/posts" class="btn btn-default">Back</a>
 @endsection

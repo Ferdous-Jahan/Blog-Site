@@ -2,11 +2,11 @@
 
 @section('content')
     @if (count($posts) > 0)
-        @foreach ($posts as $item)
+        @foreach ($posts as $post)
             <div class="card">
                 <div class="card-body">
-                    <h3><a href="/posts/{{$item->id}}">{{$item->title}}</a></h3>
-                    <small>Created on {{$item->created_at}}</small> 
+                    <h3><a href="{{route('show', $post->id)}}" >{{$post->title}}</a></h3>
+                    <small>Created on {{$post->created_at}}</small> 
                 </div>
                 <hr>
             </div>
