@@ -6,10 +6,10 @@
             <div class="card">
                 <div class="card-body">
                     <h3><a href="{{route('show', $post->id)}}" >{{$post->title}}</a></h3>
-                    <small>Created on {{$post->created_at}}</small> 
-                </div>
-                <hr>
-            </div>
+                    <small>Created on {{$post->created_at}}</small><br><br>
+                    <a type="button" href="{{route('edit', $post->id)}}" class="btn btn-outline-primary">Edit</a>
+                </div>                               
+            </div>          
         @endforeach
         {{-- {{ $posts->links() }} --}}
     @else

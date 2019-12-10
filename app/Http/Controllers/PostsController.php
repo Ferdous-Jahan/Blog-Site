@@ -14,8 +14,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //$posts = Post::orderBy('created_at', 'desc')->paginate(1);
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
+        //$posts = Post::all();
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -37,7 +37,21 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        return 123;
+        // $this->validate($request, [
+        //     'title' => 'required',
+        //     'body' => 'required'
+        // ]);
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        
+        if ($post->save()) {
+            return redirect('/posts')->with('success', 'Post Created');
+        }
+        else {
+            return redirect('/createpost')->with('error', 'Something went wrong');
+        }        
     }
 
     /**
@@ -60,7 +74,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.edit')->with('post', $post);
     }
 
     /**
@@ -72,7 +87,17 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->body = $request->body;
+        
+        if ($post->save()) {
+            return redirect('/posts')->with('success', 'Post Updated');
+        }
+        else {
+            return redirect('/edit/{$post->id}')->with('error', 'Something went wrong');
+        }  
+
     }
 
     /**
