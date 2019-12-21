@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Comment;
 
 class PostsController extends Controller
 {
@@ -58,6 +59,25 @@ class PostsController extends Controller
             return redirect('/createpost')->with('error', 'Something went wrong');
         }        
     }
+    
+    public function storeComment(Request $request,$id)
+    {
+        $this->validate($request, [
+            'body' => 'required'
+        ]);
+
+        $comment = new Comment();
+        $comment->body = $request->body;
+        $comment->user_id = auth()->user()->id;
+        $comment->post_id = $id;
+
+        if ($comment->save()) {
+            return redirect('/posts')->with('success', 'Comment posted');
+        }
+        else {
+            return redirect('/home')->with('error', 'Something went wrong');
+        } 
+    }
 
     /**
      * Display the specified resource.
@@ -68,7 +88,7 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('posts.show')->with('post', $post);
+        return view('posts.show')->with('post', $post)->with('comments', $post->comments);
     }
 
     /**
