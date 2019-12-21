@@ -72,7 +72,7 @@ class PostsController extends Controller
         $comment->post_id = $id;
 
         if ($comment->save()) {
-            return redirect('/posts')->with('success', 'Comment posted');
+            return redirect()->route('show', [$id])->with('success', 'Comment posted');
         }
         else {
             return redirect('/home')->with('error', 'Something went wrong');
