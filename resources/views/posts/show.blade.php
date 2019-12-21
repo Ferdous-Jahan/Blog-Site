@@ -4,9 +4,10 @@
     <div class="card">
         <div class="card-body">
             <h3>{{$post->title}}</h3>
-            <small>{{$post->created_at}}</small>
+            <small>{{$post->created_at}} By {{$post->user['name']}}</small>
             <p>{{$post->body}}</p>
         </div>
     </div>
-    <a href="/posts" class="btn btn-default">Back</a>
+    <br>
+    <a type="button" href="/posts" class="btn btn-outline-primary">Back</a>
 @endsection

@@ -9,25 +9,19 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                @if (Auth::check())
+                <li class="nav-item">
+                  <a class="nav-link" href="/createpost">Create Post</a>
                 </li>
+                <li>
+                  <a class="nav-link" href="/home">Dashboard</a>
+                </li>  
+                @endif
                 <li class="nav-item">
                   <a class="nav-link" href="/posts">Blog</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/createpost">Create Post</a>
-                  </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/services">Services</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/about">About</a>
-                </li>
               </ul>
-                <ul class="navbar-nav mr-auto">
 
-                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">

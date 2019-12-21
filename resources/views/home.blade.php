@@ -5,7 +5,7 @@
         @foreach ($posts as $post)
             <div class="card">
                 <div class="card-body">
-                    <h3><a href="{{route('show', $post->id)}}" >{{$post->title}}</a></h3>
+                    <h3>{{$post->title}}</h3>
                     <small>Created on {{$post->created_at}}</small>
                     <br><br>
                     <a type="button" href="{{route('edit', $post->id)}}" class="btn btn-outline-primary">Edit</a>

@@ -15,7 +15,6 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
-        //$posts = Post::all();
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -48,7 +47,7 @@ class PostsController extends Controller
         $post->user_id = auth()->user()->id;
         
         if ($post->save()) {
-            return redirect('/posts')->with('success', 'Post Created');
+            return redirect('/home')->with('success', 'Post Created');
         }
         else {
             return redirect('/createpost')->with('error', 'Something went wrong');
@@ -93,7 +92,7 @@ class PostsController extends Controller
         $post->body = $request->body;
         
         if ($post->save()) {
-            return redirect('/posts')->with('success', 'Post Updated');
+            return redirect('/home')->with('success', 'Post Updated');
         }
         else {
             return redirect('/edit/{$post->id}')->with('error', 'Something went wrong');
@@ -111,6 +110,6 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('/posts')->with('success', 'Post Deleted');
+        return redirect('/home')->with('success', 'Post Deleted');
     }
 }
